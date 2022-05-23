@@ -11,18 +11,20 @@ import java.net.URL;
 
 public class GUI implements ActionListener {
 
+    private JFrame setupFrame;
     private JTextField player1Name;
     private JTextField player2Name;
 
     public GUI() {
+        setupFrame = new JFrame("Street Fighter");
         player1Name = new JTextField(8);
         player2Name = new JTextField(8);
         setup();
+        play();
     }
 
     private void setup() {
-        JFrame frame = new JFrame("Street Fighter");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setupFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel top = new JPanel();
         JLabel intro = new JLabel("Welcome to Street Fighter!");
@@ -44,11 +46,18 @@ public class GUI implements ActionListener {
         submit.addActionListener(this);
         clear.addActionListener(this);
 
-        frame.add(top, BorderLayout.NORTH);
-        frame.add(mid, BorderLayout.CENTER);
+        setupFrame.add(top, BorderLayout.NORTH);
+        setupFrame.add(mid, BorderLayout.CENTER);
 
-        frame.pack();
-        frame.setVisible(true);
+        setupFrame.pack();
+        setupFrame.setVisible(true);
+
+    }
+
+    private void play() {
+        JFrame gameFrame = new JFrame("Street Fighter");
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
     }
 
@@ -67,6 +76,8 @@ public class GUI implements ActionListener {
             // test
             System.out.println("Player 1 name set to: " + player1.getName());
             System.out.println("Player 2 name set to: " + player2.getName());
+
+            setupFrame.setVisible(false);
         }
 
     }
